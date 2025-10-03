@@ -35,9 +35,11 @@ export default function PredictiveForm() {
         e.preventDefault();
         try {
             console.log("Sending Data:", formData);
+            console.log("API URL:", process.env.REACT_APP_API_URL);
 
+            const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:30001";
             const response = await axios.post(
-                "http://localhost:5000/api/inference",
+                `${API_BASE_URL}/api/inference`,
                 formData
             );
 
